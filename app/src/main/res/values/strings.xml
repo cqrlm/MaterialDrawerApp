@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MaterialDrawerApp</string>
+    <string name="home_title">Home</string>
+    <string name="gallery_title">Gallery</string>
+    <string name="slideshow_title">Slideshow</string>
+    <string name="tools_title">Tools</string>
+    <string name="share_title">Share</string>
+    <string name="send_title">Send</string>
+    <string name="send_text">This is send fragment</string>
+    <string name="share_text">This is share fragment</string>
+    <string name="slideshow_text">This is slideshow fragment</string>
+    <string name="tools_text">This is tools fragment</string>
+</resources>
