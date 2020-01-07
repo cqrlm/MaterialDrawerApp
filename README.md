@@ -1,2 +1,2 @@
 # MaterialDrawerApp
-Android menu example
+Android menu example with MaterialDrawer and Conductor libs
