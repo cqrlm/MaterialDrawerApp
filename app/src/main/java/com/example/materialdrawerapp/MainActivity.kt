@@ -9,7 +9,7 @@ import com.bluelinelabs.conductor.Router
 import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
 import com.example.materialdrawerapp.controller.*
-import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial
+import com.mikepenz.google_material_typeface_library.GoogleMaterial
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
@@ -32,8 +32,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-//        toolbar.background = resources.getDrawable(R.color.colorPrimaryDark)
 
         val accountHeader = AccountHeaderBuilder()
             .withActivity(this)
