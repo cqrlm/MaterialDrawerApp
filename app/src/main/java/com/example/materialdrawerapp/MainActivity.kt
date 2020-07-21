@@ -32,48 +32,48 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val accountHeader = AccountHeaderBuilder()
-            .withActivity(this)
-            .withHeaderBackground(R.drawable.header)
-            .build()
-
         setSupportActionBar(toolbar)
 
         router = Conductor.attachRouter(this, container, savedInstanceState)
-
-        drawer = DrawerBuilder()
-            .withActivity(this)
-            .withToolbar(toolbar)
-            .withAccountHeader(accountHeader)
-            .withActionBarDrawerToggle(true)
-            .withActionBarDrawerToggleAnimated(true)
-            .addDrawerItems(
-                homeItem.withIcon(GoogleMaterial.Icon.gmd_home),
-                galleryItem.withIcon(GoogleMaterial.Icon.gmd_photo_library),
-                slideshowItem.withIcon(GoogleMaterial.Icon.gmd_slideshow),
-                toolsItem.withIcon(GoogleMaterial.Icon.gmd_build),
-                SectionDrawerItem().withName("Communicate"),
-                shareItem.withIcon(GoogleMaterial.Icon.gmd_share),
-                sendItem.withIcon(GoogleMaterial.Icon.gmd_send)
-            )
-            .withOnDrawerItemClickListener(object : Drawer.OnDrawerItemClickListener {
-                override fun onItemClick(
-                    view: View?,
-                    position: Int,
-                    drawerItem: IDrawerItem<*>
-                ): Boolean {
-                    selectItem(drawerItem)
-                    return true
-                }
-            })
-            .build()
+        drawer = initDrawer()
 
         if (!router.hasRootController()) {
             router.setRoot(RouterTransaction.with(HomeController()))
         }
         selectItem()
     }
+
+    private fun initDrawer() = DrawerBuilder()
+        .withActivity(this)
+        .withToolbar(toolbar)
+        .withAccountHeader(initAccountHeader())
+        .withActionBarDrawerToggle(true)
+        .withActionBarDrawerToggleAnimated(true)
+        .addDrawerItems(
+            homeItem.withIcon(GoogleMaterial.Icon.gmd_home),
+            galleryItem.withIcon(GoogleMaterial.Icon.gmd_photo_library),
+            slideshowItem.withIcon(GoogleMaterial.Icon.gmd_slideshow),
+            toolsItem.withIcon(GoogleMaterial.Icon.gmd_build),
+            SectionDrawerItem().withName("Communicate"),
+            shareItem.withIcon(GoogleMaterial.Icon.gmd_share),
+            sendItem.withIcon(GoogleMaterial.Icon.gmd_send)
+        )
+        .withOnDrawerItemClickListener(object : Drawer.OnDrawerItemClickListener {
+            override fun onItemClick(
+                view: View?,
+                position: Int,
+                drawerItem: IDrawerItem<*>
+            ): Boolean {
+                selectItem(drawerItem)
+                return true
+            }
+        })
+        .build()
+
+    private fun initAccountHeader() = AccountHeaderBuilder()
+        .withActivity(this)
+        .withHeaderBackground(R.drawable.header)
+        .build()
 
     private fun selectItem(drawerItem: IDrawerItem<*>) {
         val controller: Controller = when (drawerItem) {
